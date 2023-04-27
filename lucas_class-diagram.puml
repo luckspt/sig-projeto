@@ -1,0 +1,158 @@
+@startuml
+' TODO entregas parciais e entregas restantes
+
+class Produto {
+    PK id: Number
+    nome: String
+    dataRegisto: Date
+    descricao: String
+    FK dimensao: Dimensao
+    peso: Number
+    FK categoria: Categoria
+    stock: Number
+}
+
+class Dimensao {
+    PK id: Number
+    altura: Number
+    largura: Number
+    profundidade: Number
+}
+
+class Categoria {
+    PK id: Number
+    nome: String
+    descricao: String
+    FK categoriaPai?: Categoria
+}
+
+class Utilizador {
+    PK id: Number
+    nome: String
+    dataNascimento: Date
+    email: String
+    telefone: String
+    moradaEntrega: String
+    username: String
+    password: String
+    FK validacaoUtilizador?: ValidacaoUtilizador
+    FK tipo: TipoUtilizador
+}
+
+class ValidacaoUtilizador {
+    PK FK utilizador: Utilizador
+    codigo: String
+    dataInicio: Date
+    dataExpiracao: Date
+}
+
+enum TipoUtilizador {
+    CONSUMIDOR_FINAL
+    CORPORATE
+    PEQUENA_EMPRESA
+    HOME_OFFICE
+}
+
+class Encomenda {
+    PK id: Number
+    FK utilizador: Utilizador
+    items: LinhaEncomenda[]
+    cancelada: Boolean
+    prioridade: PrioridadeEncomenda
+    moradaEntrega: String
+    valorExpedicao: Number
+    valorTotal: Number
+    FK pagamento: Pagamento
+    modoEntrega: TipoEntrega
+    FK tipoEmbalagem: TipoEmbalagem
+    dataCriacao: Date
+}
+
+enum PrioridadeEncomenda {
+    ALTA
+    MEDIA
+    BAIXA
+}
+
+class LinhaEncomenda {
+    PK FK encomenda: Encomenda
+    PK FK produto: Produto
+    quantidade: Number
+    ' No caso do preço do produto mudar, o preço da linha de encomenda não deve ser alterado
+    preco: Number
+}
+
+class Pagamento {
+    PK FK encomenda: Encomenda
+    estado: EstadoPagamento
+    cartaoCredito?: CartaoCredito
+}
+
+enum EstadoPagamento {
+    PENDENTE
+    PAGO
+    CANCELADO
+}
+
+class Zona {
+    FK id: Number
+    PK gerente : Utilizador
+    nome: String
+}
+
+class Estado {
+    PK id: Number
+    zona: Zona
+    nome: String
+}
+
+class Cidade {
+    PK id: Number
+    estado: Estado
+    nome: String
+}
+
+enum TipoEntrega {
+    AEREO_EXPRESSO
+    AEREO_NORMAL
+    TERRESTRE
+}
+
+class TipoEmbalagem {
+    PK id: Number
+    nome: String
+}
+
+class Devolucao {
+    PK FK linhaEncomendaEncomenda: Encomenda
+    PK FK linhaEncomendaProduto: Produto
+    motivo: String
+    data: Date
+    valor: Number
+}
+
+Encomenda "1" - "1..*" LinhaEncomenda
+Encomenda "1" -- "0..1" Pagamento
+PrioridadeEncomenda -> Encomenda
+TipoEntrega -> Encomenda
+Encomenda "*" - "1" TipoEmbalagem
+Encomenda "1" -- "0..*" Devolucao
+
+Pagamento <-- EstadoPagamento
+
+LinhaEncomenda "*" - "1" Produto
+Produto "*" - "1" Dimensao
+Produto "1" -- "1..*" Categoria
+
+Utilizador "1" - "0..1" ValidacaoUtilizador
+Utilizador <- TipoUtilizador
+
+Utilizador "1" -- "0..*" Encomenda
+
+Zona "*" - "1" Utilizador
+Estado "0..*" - "1" Zona
+Cidade "0..*" - "1" Estado
+
+Categoria "*" - "1" Categoria
+
+@enduml

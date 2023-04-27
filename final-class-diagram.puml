@@ -1,0 +1,160 @@
+@startuml
+' Questões:
+'  Histórico?
+'  entregas parciais e entregas restantes
+'  pagamento, guardar? Útil para a devolução?
+
+class Produto {
+    PK id: Number
+    nome: String
+    dataRegisto: Date
+    descricao: String
+    ' 10% de desconto em informática? ou iPhone 14 com desconto?
+    desconto: Number
+    preco: Number
+    stock: Number
+    peso: Number
+}
+
+class Categoria {
+    PK id: Number
+    nome: String
+    descricao: String
+}
+
+class Utilizador {
+    PK id: Number
+    nome: String
+    dataNascimento: Date
+    email: String
+    telefone: String
+    username: String
+    password: String
+    ' Contactos?
+    '  1) email e telefone (2 contactos)
+    '  2) email1, email2, telefone1, telefone2, batata1, ... (n contactos)   
+}
+
+class Cliente {
+    PK FK utilizador: Utilizador
+    moradaEntrega: String
+}
+
+class Funcionario {
+    ' Gestor ou Diretor Comercial. Separar em duas?
+    PK FK utilizador: Utilizador
+}
+
+class Encomenda {
+    PK id: Number
+    ' valorExpedição e/ou valorTotal?
+    valorExpedicao: Number
+    valorTotal: Number
+    dataCriacao: Date
+}
+
+class LinhaEncomenda {
+    PK FK encomenda: Encomenda
+    PK FK produto: Produto
+    quantidade: Number
+    ' No caso do preço do produto mudar, o preço da linha de encomenda não deve ser alterado
+    preco: Number
+}
+
+class EstadoEncomenda {
+    ' Aberto, Aceite, Cancelado
+    PK id: Number
+    nome: String
+    data: Date
+}
+
+class Segmento {
+    PK id: Number
+    nome: String
+}
+
+class PrioridadeEncomenda {
+    PK id: Number
+    nome: String
+}
+
+class ModoEntrega {
+    PK id: Number
+    nome: String
+}
+
+class Devolucao {
+    PK FK linhaEncomendaEncomenda: Encomenda
+    PK FK linhaEncomendaProduto: Produto
+    motivo: String
+    data: Date
+    valor: Number
+}
+
+class Pagamento {
+    PK FK encomenda: Encomenda
+}
+
+class CartaoCredito {
+    PK FK pagamento: Pagamento
+    numero: String
+    dataValidade: Date
+    codigoSeguranca: Number
+}
+
+class EstadoPagamento {
+    PK id: Number
+    nome: String
+}
+
+class TipoEmbalagem {
+    PK id: Number
+    nome: String
+}
+
+
+class Zona {
+    PK id: Number
+    nome: String
+}
+
+class Estado {
+    PK id: Number
+    nome: String
+}
+
+class Cidade {
+    PK id: Number
+    nome: String
+}
+
+Cidade "0..*" - "1" Estado
+Estado "0..*" - "1" Zona
+Zona "*" - "1" Funcionario
+
+Categoria "1" -- "*" Categoria : subCategorias
+
+Encomenda "1" -- "1..*" LinhaEncomenda
+Produto "1" - "*" LinhaEncomenda
+
+Categoria "1" -- "1..*" Produto
+
+Devolucao "0..1" - "1" Encomenda
+TipoEmbalagem "1" -- "*" Encomenda
+
+Utilizador "1" -- "1" Funcionario
+Utilizador "1" -- "1" Cliente
+
+Funcionario "1" -- "*" Encomenda
+Cliente "1" -- "*" Encomenda
+
+Encomenda "1" -- "*" EstadoEncomenda
+Encomenda "*" -- "1" PrioridadeEncomenda
+Encomenda "1" -- "1" Pagamento
+Pagamento "1" -- "1" EstadoPagamento
+Pagamento "1" -- "1" CartaoCredito 
+Encomenda "*" - "1" ModoEntrega
+
+Cliente "*" - "1" Segmento
+
+@enduml
