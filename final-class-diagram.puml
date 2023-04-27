@@ -1,8 +1,6 @@
 @startuml
 ' Questões:
-'  Histórico?
-'  entregas parciais e entregas restantes
-'  pagamento, guardar? Útil para a devolução?
+'  entregas parciais: entregas e linhas de entrega
 
 class Produto {
     PK id: Number
@@ -95,13 +93,6 @@ class Pagamento {
     PK FK encomenda: Encomenda
 }
 
-class CartaoCredito {
-    PK FK pagamento: Pagamento
-    numero: String
-    dataValidade: Date
-    codigoSeguranca: Number
-}
-
 class EstadoPagamento {
     PK id: Number
     nome: String
@@ -111,7 +102,6 @@ class TipoEmbalagem {
     PK id: Number
     nome: String
 }
-
 
 class Zona {
     PK id: Number
@@ -151,8 +141,7 @@ Cliente "1" -- "*" Encomenda
 Encomenda "1" -- "*" EstadoEncomenda
 Encomenda "*" -- "1" PrioridadeEncomenda
 Encomenda "1" -- "1" Pagamento
-Pagamento "1" -- "1" EstadoPagamento
-Pagamento "1" -- "1" CartaoCredito 
+Pagamento "1" -- "*" EstadoPagamento
 Encomenda "*" - "1" ModoEntrega
 
 Cliente "*" - "1" Segmento
