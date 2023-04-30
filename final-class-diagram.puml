@@ -7,11 +7,17 @@ class Produto {
     nome: String
     dataRegisto: Date
     descricao: String
-    ' 10% de desconto em informática? ou iPhone 14 com desconto?
+    ' Questão: 10% de desconto em informática? ou iPhone 14 com desconto?
     desconto: Number
-    preco: Number
     stock: Number
     peso: Number
+}
+
+class Preco {
+    PK id: Number
+    dataInicio: Date
+    dataFim: Date
+    valor: Number
 }
 
 class Categoria {
@@ -28,7 +34,7 @@ class Utilizador {
     telefone: String
     username: String
     password: String
-    ' Contactos?
+    ' Questão: contactos?
     '  1) email e telefone (2 contactos)
     '  2) email1, email2, telefone1, telefone2, batata1, ... (n contactos)   
 }
@@ -39,13 +45,12 @@ class Cliente {
 }
 
 class Funcionario {
-    ' Gestor ou Diretor Comercial. Separar em duas?
     PK FK utilizador: Utilizador
 }
 
 class Encomenda {
     PK id: Number
-    ' valorExpedição e/ou valorTotal?
+    ' Questão: valorExpedição e/ou valorTotal?
     valorExpedicao: Number
     valorTotal: Number
     dataCriacao: Date
@@ -55,12 +60,13 @@ class LinhaEncomenda {
     PK FK encomenda: Encomenda
     PK FK produto: Produto
     quantidade: Number
-    ' No caso do preço do produto mudar, o preço da linha de encomenda não deve ser alterado
+    ' No caso do preço do produto mudar,
+    ' o preço da linha de encomenda mantém-se
     preco: Number
 }
 
+' Aberto, Aceite, Cancelado
 class EstadoEncomenda {
-    ' Aberto, Aceite, Cancelado
     PK id: Number
     nome: String
     data: Date
@@ -76,14 +82,20 @@ class PrioridadeEncomenda {
     nome: String
 }
 
-class ModoEntrega {
+class Entrega {
     PK id: Number
-    nome: String
+    modo: String
+    data: Date
+}
+
+class LinhaEntrega {
+    PK FK entrega: Entrega
+    PK FK linhaEncomenda: LinhaEncomenda
+    quantidade: Number
 }
 
 class Devolucao {
-    PK FK linhaEncomendaEncomenda: Encomenda
-    PK FK linhaEncomendaProduto: Produto
+    PK FK id: Number
     motivo: String
     data: Date
     valor: Number
@@ -138,12 +150,17 @@ Utilizador "1" -- "1" Cliente
 Funcionario "1" -- "*" Encomenda
 Cliente "1" -- "*" Encomenda
 
-Encomenda "1" -- "*" EstadoEncomenda
-Encomenda "*" -- "1" PrioridadeEncomenda
 Encomenda "1" -- "1" Pagamento
 Pagamento "1" -- "*" EstadoPagamento
-Encomenda "*" - "1" ModoEntrega
 
 Cliente "*" - "1" Segmento
 
+Produto "1" -- "*" Preco
+
+Encomenda "1" -- "*" Entrega
+LinhaEntrega "*" - "1" Entrega
+LinhaEncomenda "1" -- "*" LinhaEntrega
+
+Encomenda "1" -- "*" EstadoEncomenda
+Encomenda "*" -- "1" PrioridadeEncomenda
 @enduml
