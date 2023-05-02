@@ -1,138 +1,134 @@
-@startuml
-' Questões:
-'  entregas parciais: entregas e linhas de entrega
+@startuml US Office Store
 
 class Produto {
-    PK id: Number
+    PK idProduto: Number
     nome: String
     dataRegisto: Date
     descricao: String
-    ' Questão: 10% de desconto em informática? ou iPhone 14 com desconto?
     desconto: Number
     stock: Number
     peso: Number
 }
 
 class Preco {
-    PK id: Number
+    PK idPreco: Number
     dataInicio: Date
     dataFim: Date
     valor: Number
 }
 
 class Categoria {
-    PK id: Number
+    PK idCategoria: Number
     nome: String
     descricao: String
 }
 
 class Utilizador {
-    PK id: Number
+    PK idUser: Number
     nome: String
     dataNascimento: Date
     email: String
     telefone: String
     username: String
     password: String
-    ' Questão: contactos?
-    '  1) email e telefone (2 contactos)
-    '  2) email1, email2, telefone1, telefone2, batata1, ... (n contactos)   
 }
 
 class Cliente {
-    PK FK utilizador: Utilizador
+    PK FK idUser: Number
     moradaEntrega: String
 }
 
 class Funcionario {
-    PK FK utilizador: Utilizador
+    PK FK idUser: Number
 }
 
 class Encomenda {
-    PK id: Number
-    ' Questão: valorExpedição e/ou valorTotal?
-    valorExpedicao: Number
+    PK idEncomenda: Number
     valorTotal: Number
     dataCriacao: Date
 }
 
 class LinhaEncomenda {
-    PK FK encomenda: Encomenda
-    PK FK produto: Produto
+    PK FK idEncomenda: Number
+    PK FK idProduto: Number
     quantidade: Number
-    ' No caso do preço do produto mudar,
-    ' o preço da linha de encomenda mantém-se
     preco: Number
 }
 
-' Aberto, Aceite, Cancelado
 class EstadoEncomenda {
-    PK id: Number
+    PK idEstadoEncomenda: Number
     nome: String
     data: Date
 }
 
 class Segmento {
-    PK id: Number
+    PK idSegmento: Number
     nome: String
 }
 
 class PrioridadeEncomenda {
-    PK id: Number
+    PK idPrioridade: Number
     nome: String
 }
 
 class Entrega {
-    PK id: Number
-    modo: String
+    PK idEntrega: Number
     data: Date
 }
 
+class ModoEntrega{
+    PK idModoEntrega: Number
+    nome: String
+}
+
 class LinhaEntrega {
-    PK FK entrega: Entrega
+    PK FK idEntrega: Entrega
     PK FK linhaEncomenda: LinhaEncomenda
     quantidade: Number
 }
 
 class Devolucao {
-    PK FK id: Number
+    PK FK idEncomenda: Number
     motivo: String
     data: Date
     valor: Number
 }
 
 class Pagamento {
-    PK FK encomenda: Encomenda
+    PK FK idEncomenda: Encomenda
+    data: Date
+    modoPagamento: String 
+    'Ver se colocamos uma entidade para isto'
 }
 
 class EstadoPagamento {
-    PK id: Number
+    PK idEstadoPagamento: Number
     nome: String
 }
 
 class TipoEmbalagem {
-    PK id: Number
+    PK idEmbalagem: Number
     nome: String
 }
 
 class Zona {
-    PK id: Number
+    PK idZona: Number
     nome: String
 }
 
 class Estado {
-    PK id: Number
+    PK idEstado: Number
     nome: String
 }
 
 class Cidade {
-    PK id: Number
+    PK idCidade: Number
     nome: String
 }
 
-Cidade "0..*" - "1" Estado
-Estado "0..*" - "1" Zona
-Zona "*" - "1" Funcionario
+Cidade "0..*" -- "1" Estado
+Estado "0..*" -- "1" Zona
+Zona "1" - "1" Funcionario
 
 Categoria "1" -- "*" Categoria : subCategorias
 
@@ -158,6 +154,7 @@ Cliente "*" - "1" Segmento
 Produto "1" -- "*" Preco
 
 Encomenda "1" -- "*" Entrega
+Entrega "*" -- "1" ModoEntrega
 LinhaEntrega "*" - "1" Entrega
 LinhaEncomenda "1" -- "*" LinhaEntrega
 
