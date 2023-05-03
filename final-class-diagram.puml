@@ -24,7 +24,7 @@ class Categoria {
 }
 
 class Utilizador {
-    PK idUser: Number
+    PK idUtilizador: Number
     nome: String
     dataNascimento: Date
     email: String
@@ -34,12 +34,12 @@ class Utilizador {
 }
 
 class Cliente {
-    PK FK idUser: Number
+    PK FK idUtilizador: Utilizador
     moradaEntrega: String
 }
 
 class Funcionario {
-    PK FK idUser: Number
+    PK FK idUtilizador: Utilizador
 }
 
 class Encomenda {
@@ -49,8 +49,8 @@ class Encomenda {
 }
 
 class LinhaEncomenda {
-    PK FK idEncomenda: Number
-    PK FK idProduto: Number
+    PK FK idEncomenda: Encomenda
+    PK FK idProduto: Produto
     quantidade: Number
     preco: Number
 }
@@ -83,12 +83,12 @@ class ModoEntrega{
 
 class LinhaEntrega {
     PK FK idEntrega: Entrega
-    PK FK linhaEncomenda: LinhaEncomenda
+    PK FK idLinhaEncomenda: LinhaEncomenda
     quantidade: Number
 }
 
 class Devolucao {
-    PK FK idEncomenda: Number
+    PK FK idEncomenda: Encomenda
     motivo: String
     data: Date
     valor: Number
@@ -128,7 +128,7 @@ class Cidade {
 
 Cidade "0..*" -- "1" Estado
 Estado "0..*" -- "1" Zona
-Zona "1" - "1" Funcionario
+Zona "1" - "0..*" Funcionario
 
 Categoria "1" -- "*" Categoria : subCategorias
 
@@ -140,8 +140,8 @@ Categoria "1" -- "1..*" Produto
 Devolucao "0..1" - "1" Encomenda
 TipoEmbalagem "1" -- "*" Encomenda
 
-Utilizador "1" -- "1" Funcionario
-Utilizador "1" -- "1" Cliente
+Utilizador "1" -- "0..1" Funcionario
+Utilizador "1" -- "0..1" Cliente
 
 Funcionario "1" -- "*" Encomenda
 Cliente "1" -- "*" Encomenda
