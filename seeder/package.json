@@ -1,0 +1,31 @@
+{
+  "name": "sig-seeder",
+  "version": "1.0.0",
+  "description": "Data seeder for SIG project",
+  "main": "dist/index.js",
+  "repository": "https://github.com/luckspt/sig-projeto",
+  "author": "Lucas Pinto & Rómulo Nogueira",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc -b src",
+    "watch": "tsc -b src -w",
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "@mikro-orm/core": "^5.7.4",
+    "@mikro-orm/mysql": "^5.7.4",
+    "@mikro-orm/reflection": "^5.7.4"
+  },
+  "devDependencies": {
+    "@mikro-orm/cli": "^5.7.4",
+    "@mikro-orm/seeder": "^5.7.4",
+    "@sapphire/eslint-config": "^4.4.2",
+    "@sapphire/prettier-config": "^1.4.5",
+    "@sapphire/ts-config": "^4.0.0",
+    "eslint": "^8.39.0",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
+    "ts-node": "^10.9.1"
+  }
+}
