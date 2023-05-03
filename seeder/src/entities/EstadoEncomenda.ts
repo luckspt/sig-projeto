@@ -1,17 +1,17 @@
-import { Entity, ManyToOne, PrimaryKey, Property } from "@mikro-orm/core";
-import type { Encomenda } from "./Encomenda";
+import { Entity, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
+import type { Encomenda } from './Encomenda';
 
 @Entity()
 export class EstadoEncomenda {
-  @PrimaryKey()
-  public id!: number;
+	@PrimaryKey()
+	public id!: number;
 
-  @Property()
-  public nome!: string;
+	@Property()
+	public nome!: string;
 
-  @Property()
-  public data!: Date;
+	@Property()
+	public data!: Date;
 
-  @ManyToOne()
-  public encomenda!: Encomenda;
+	@ManyToOne()
+	public encomenda!: Encomenda;
 }

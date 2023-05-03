@@ -8,6 +8,9 @@ const config: Options = {
 	metadataProvider: TsMorphMetadataProvider,
 	seeder: {
 		defaultSeeder: 'MainSeeder'
+	},
+	migrations: {
+		path: './src/migrations'
 	}
 };
 
