@@ -4,7 +4,7 @@ import type { EstadoPagamento } from './EstadoPagamento';
 
 @Entity()
 export class Pagamento {
-	@OneToOne({ primary: true, joinColumn: 'id_encomenda' })
+	@OneToOne({ primary: true })
 	public encomenda!: Encomenda;
 
 	@Property()

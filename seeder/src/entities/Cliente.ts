@@ -5,7 +5,7 @@ import { Encomenda } from './Encomenda';
 
 @Entity()
 export class Cliente {
-	@OneToOne({ primary: true, joinColumn: 'id_utilizador' })
+	@OneToOne({ primary: true })
 	public utilizador!: Utilizador;
 
 	@Property()

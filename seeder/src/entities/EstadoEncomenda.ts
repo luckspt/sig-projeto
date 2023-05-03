@@ -1,17 +1,15 @@
 import { Entity, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
 import type { Encomenda } from './Encomenda';
+import type { EstadoEncomendaSpec } from './EstadoEncomendaSpec';
 
 @Entity()
 export class EstadoEncomenda {
-	@PrimaryKey()
-	public id!: number;
+	@ManyToOne({ primary: true })
+	public encomenda!: Encomenda;
 
-	@Property()
-	public nome!: string;
+	@ManyToOne({ primary: true })
+	public estado!: EstadoEncomendaSpec;
 
 	@Property()
 	public data!: Date;
-
-	@ManyToOne()
-	public encomenda!: Encomenda;
 }

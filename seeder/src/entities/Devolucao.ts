@@ -3,11 +3,11 @@ import type { Encomenda } from './Encomenda';
 
 @Entity()
 export class Devolucao {
-	@OneToOne({ primary: true, joinColumn: 'id_encomenda' })
-	public encomanda!: Encomenda;
+	@OneToOne({ primary: true })
+	public encomenda!: Encomenda;
 
 	@Property()
-	public movito!: string;
+	public motivo!: string;
 
 	@Property()
 	public data!: Date;

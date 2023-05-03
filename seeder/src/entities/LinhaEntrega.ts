@@ -4,10 +4,10 @@ import type { Entrega } from './Entrega';
 
 @Entity()
 export class LinhaEntrega {
-	@ManyToOne({ primary: true, joinColumn: 'id_linha_encomenda' })
+	@ManyToOne({ primary: true })
 	public linhaEncomenda!: LinhaEncomenda;
 
-	@ManyToOne({ primary: true, joinColumn: 'id_entrega' })
+	@ManyToOne({ primary: true })
 	public entrega!: Entrega;
 
 	@Property()

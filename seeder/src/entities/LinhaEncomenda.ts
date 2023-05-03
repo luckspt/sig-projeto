@@ -5,10 +5,10 @@ import { LinhaEntrega } from './LinhaEntrega';
 
 @Entity()
 export class LinhaEncomenda {
-	@ManyToOne({ primary: true, joinColumn: 'id_produto' })
+	@ManyToOne({ primary: true })
 	public produto!: Produto;
 
-	@ManyToOne({ primary: true, joinColumn: 'id_encomenda' })
+	@ManyToOne({ primary: true })
 	public encomenda!: Encomenda;
 
 	@Property()
