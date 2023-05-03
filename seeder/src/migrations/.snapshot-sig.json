@@ -1,0 +1,1769 @@
+{
+  "namespaces": [],
+  "tables": [
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "descricao": {
+          "name": "descricao",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "categoria_pai_id": {
+          "name": "categoria_pai_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "categoria",
+      "indexes": [
+        {
+          "columnNames": [
+            "categoria_pai_id"
+          ],
+          "composite": false,
+          "keyName": "categoria_categoria_pai_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "categoria_categoria_pai_id_foreign": {
+          "constraintName": "categoria_categoria_pai_id_foreign",
+          "columnNames": [
+            "categoria_pai_id"
+          ],
+          "localTableName": "categoria",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "categoria",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        }
+      },
+      "name": "estado_encomenda_spec",
+      "indexes": [
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        }
+      },
+      "name": "modo_entrega",
+      "indexes": [
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        }
+      },
+      "name": "prioridade_encomenda",
+      "indexes": [
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "data_registro": {
+          "name": "data_registro",
+          "type": "datetime",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 0,
+          "mappedType": "datetime"
+        },
+        "descricao": {
+          "name": "descricao",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "desconto": {
+          "name": "desconto",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "stock": {
+          "name": "stock",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "peso": {
+          "name": "peso",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "categoria_id": {
+          "name": "categoria_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "produto",
+      "indexes": [
+        {
+          "columnNames": [
+            "categoria_id"
+          ],
+          "composite": false,
+          "keyName": "produto_categoria_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "produto_categoria_id_foreign": {
+          "constraintName": "produto_categoria_id_foreign",
+          "columnNames": [
+            "categoria_id"
+          ],
+          "localTableName": "produto",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "categoria",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "data_inicio": {
+          "name": "data_inicio",
+          "type": "datetime",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 0,
+          "mappedType": "datetime"
+        },
+        "data_fim": {
+          "name": "data_fim",
+          "type": "datetime",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 0,
+          "mappedType": "datetime"
+        },
+        "valor": {
+          "name": "valor",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "produto_id": {
+          "name": "produto_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "preco",
+      "indexes": [
+        {
+          "columnNames": [
+            "produto_id"
+          ],
+          "composite": false,
+          "keyName": "preco_produto_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "preco_produto_id_foreign": {
+          "constraintName": "preco_produto_id_foreign",
+          "columnNames": [
+            "produto_id"
+          ],
+          "localTableName": "preco",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "produto",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        }
+      },
+      "name": "segmento",
+      "indexes": [
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        }
+      },
+      "name": "tipo_embalagem",
+      "indexes": [
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        }
+      },
+      "name": "zona",
+      "indexes": [
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "data_nascimento": {
+          "name": "data_nascimento",
+          "type": "datetime",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 0,
+          "mappedType": "datetime"
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "telefone": {
+          "name": "telefone",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "cliente_id_utilizador": {
+          "name": "cliente_id_utilizador",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        },
+        "funcionario_id_utilizador": {
+          "name": "funcionario_id_utilizador",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        }
+      },
+      "name": "utilizador",
+      "indexes": [
+        {
+          "columnNames": [
+            "cliente_id_utilizador"
+          ],
+          "composite": false,
+          "keyName": "utilizador_cliente_id_utilizador_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "funcionario_id_utilizador"
+          ],
+          "composite": false,
+          "keyName": "utilizador_funcionario_id_utilizador_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "utilizador_cliente_id_utilizador_foreign": {
+          "constraintName": "utilizador_cliente_id_utilizador_foreign",
+          "columnNames": [
+            "cliente_id_utilizador"
+          ],
+          "localTableName": "utilizador",
+          "referencedColumnNames": [
+            "id_utilizador"
+          ],
+          "referencedTableName": "cliente",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        },
+        "utilizador_funcionario_id_utilizador_foreign": {
+          "constraintName": "utilizador_funcionario_id_utilizador_foreign",
+          "columnNames": [
+            "funcionario_id_utilizador"
+          ],
+          "localTableName": "utilizador",
+          "referencedColumnNames": [
+            "id_utilizador"
+          ],
+          "referencedTableName": "funcionario",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id_utilizador": {
+          "name": "id_utilizador",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "zona_id": {
+          "name": "zona_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "funcionario",
+      "indexes": [
+        {
+          "columnNames": [
+            "zona_id"
+          ],
+          "composite": false,
+          "keyName": "funcionario_zona_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id_utilizador"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "funcionario_id_utilizador_foreign": {
+          "constraintName": "funcionario_id_utilizador_foreign",
+          "columnNames": [
+            "id_utilizador"
+          ],
+          "localTableName": "funcionario",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "utilizador",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "funcionario_zona_id_foreign": {
+          "constraintName": "funcionario_zona_id_foreign",
+          "columnNames": [
+            "zona_id"
+          ],
+          "localTableName": "funcionario",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "zona",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id_utilizador": {
+          "name": "id_utilizador",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "morada_entrega": {
+          "name": "morada_entrega",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "segmento_id": {
+          "name": "segmento_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "cliente",
+      "indexes": [
+        {
+          "columnNames": [
+            "segmento_id"
+          ],
+          "composite": false,
+          "keyName": "cliente_segmento_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id_utilizador"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "cliente_id_utilizador_foreign": {
+          "constraintName": "cliente_id_utilizador_foreign",
+          "columnNames": [
+            "id_utilizador"
+          ],
+          "localTableName": "cliente",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "utilizador",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "cliente_segmento_id_foreign": {
+          "constraintName": "cliente_segmento_id_foreign",
+          "columnNames": [
+            "segmento_id"
+          ],
+          "localTableName": "cliente",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "segmento",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "valor_total": {
+          "name": "valor_total",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "data_criacao": {
+          "name": "data_criacao",
+          "type": "datetime",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 0,
+          "mappedType": "datetime"
+        },
+        "devolucao_id_encomenda": {
+          "name": "devolucao_id_encomenda",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        },
+        "funcionario_id_utilizador": {
+          "name": "funcionario_id_utilizador",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "cliente_id_utilizador": {
+          "name": "cliente_id_utilizador",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "tipo_embalagem_id": {
+          "name": "tipo_embalagem_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "pagamento_id_encomenda": {
+          "name": "pagamento_id_encomenda",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "prioridade_id": {
+          "name": "prioridade_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "encomenda",
+      "indexes": [
+        {
+          "columnNames": [
+            "devolucao_id_encomenda"
+          ],
+          "composite": false,
+          "keyName": "encomenda_devolucao_id_encomenda_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "funcionario_id_utilizador"
+          ],
+          "composite": false,
+          "keyName": "encomenda_funcionario_id_utilizador_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "cliente_id_utilizador"
+          ],
+          "composite": false,
+          "keyName": "encomenda_cliente_id_utilizador_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "tipo_embalagem_id"
+          ],
+          "composite": false,
+          "keyName": "encomenda_tipo_embalagem_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "pagamento_id_encomenda"
+          ],
+          "composite": false,
+          "keyName": "encomenda_pagamento_id_encomenda_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "prioridade_id"
+          ],
+          "composite": false,
+          "keyName": "encomenda_prioridade_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "encomenda_devolucao_id_encomenda_foreign": {
+          "constraintName": "encomenda_devolucao_id_encomenda_foreign",
+          "columnNames": [
+            "devolucao_id_encomenda"
+          ],
+          "localTableName": "encomenda",
+          "referencedColumnNames": [
+            "id_encomenda"
+          ],
+          "referencedTableName": "devolucao",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        },
+        "encomenda_funcionario_id_utilizador_foreign": {
+          "constraintName": "encomenda_funcionario_id_utilizador_foreign",
+          "columnNames": [
+            "funcionario_id_utilizador"
+          ],
+          "localTableName": "encomenda",
+          "referencedColumnNames": [
+            "id_utilizador"
+          ],
+          "referencedTableName": "funcionario",
+          "updateRule": "cascade"
+        },
+        "encomenda_cliente_id_utilizador_foreign": {
+          "constraintName": "encomenda_cliente_id_utilizador_foreign",
+          "columnNames": [
+            "cliente_id_utilizador"
+          ],
+          "localTableName": "encomenda",
+          "referencedColumnNames": [
+            "id_utilizador"
+          ],
+          "referencedTableName": "cliente",
+          "updateRule": "cascade"
+        },
+        "encomenda_tipo_embalagem_id_foreign": {
+          "constraintName": "encomenda_tipo_embalagem_id_foreign",
+          "columnNames": [
+            "tipo_embalagem_id"
+          ],
+          "localTableName": "encomenda",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "tipo_embalagem",
+          "updateRule": "cascade"
+        },
+        "encomenda_pagamento_id_encomenda_foreign": {
+          "constraintName": "encomenda_pagamento_id_encomenda_foreign",
+          "columnNames": [
+            "pagamento_id_encomenda"
+          ],
+          "localTableName": "encomenda",
+          "referencedColumnNames": [
+            "id_encomenda"
+          ],
+          "referencedTableName": "pagamento",
+          "updateRule": "cascade"
+        },
+        "encomenda_prioridade_id_foreign": {
+          "constraintName": "encomenda_prioridade_id_foreign",
+          "columnNames": [
+            "prioridade_id"
+          ],
+          "localTableName": "encomenda",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "prioridade_encomenda",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id_encomenda": {
+          "name": "id_encomenda",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "data": {
+          "name": "data",
+          "type": "datetime",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 0,
+          "mappedType": "datetime"
+        },
+        "modo_pagamento": {
+          "name": "modo_pagamento",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "estado_pagamento_id": {
+          "name": "estado_pagamento_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "pagamento",
+      "indexes": [
+        {
+          "columnNames": [
+            "estado_pagamento_id"
+          ],
+          "composite": false,
+          "keyName": "pagamento_estado_pagamento_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id_encomenda"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "pagamento_id_encomenda_foreign": {
+          "constraintName": "pagamento_id_encomenda_foreign",
+          "columnNames": [
+            "id_encomenda"
+          ],
+          "localTableName": "pagamento",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "encomenda",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "pagamento_estado_pagamento_id_foreign": {
+          "constraintName": "pagamento_estado_pagamento_id_foreign",
+          "columnNames": [
+            "estado_pagamento_id"
+          ],
+          "localTableName": "pagamento",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "estado_pagamento",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "pagamento_id_encomenda": {
+          "name": "pagamento_id_encomenda",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "estado_pagamento",
+      "indexes": [
+        {
+          "columnNames": [
+            "pagamento_id_encomenda"
+          ],
+          "composite": false,
+          "keyName": "estado_pagamento_pagamento_id_encomenda_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "estado_pagamento_pagamento_id_encomenda_foreign": {
+          "constraintName": "estado_pagamento_pagamento_id_encomenda_foreign",
+          "columnNames": [
+            "pagamento_id_encomenda"
+          ],
+          "localTableName": "estado_pagamento",
+          "referencedColumnNames": [
+            "id_encomenda"
+          ],
+          "referencedTableName": "pagamento",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id_produto": {
+          "name": "id_produto",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "id_encomenda": {
+          "name": "id_encomenda",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "quantidade": {
+          "name": "quantidade",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "preco": {
+          "name": "preco",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "linha_encomenda",
+      "indexes": [
+        {
+          "columnNames": [
+            "id_produto"
+          ],
+          "composite": false,
+          "keyName": "linha_encomenda_id_produto_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "id_encomenda"
+          ],
+          "composite": false,
+          "keyName": "linha_encomenda_id_encomenda_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id_produto",
+            "id_encomenda"
+          ],
+          "composite": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "linha_encomenda_id_produto_foreign": {
+          "constraintName": "linha_encomenda_id_produto_foreign",
+          "columnNames": [
+            "id_produto"
+          ],
+          "localTableName": "linha_encomenda",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "produto",
+          "updateRule": "cascade"
+        },
+        "linha_encomenda_id_encomenda_foreign": {
+          "constraintName": "linha_encomenda_id_encomenda_foreign",
+          "columnNames": [
+            "id_encomenda"
+          ],
+          "localTableName": "linha_encomenda",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "encomenda",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id_encomenda": {
+          "name": "id_encomenda",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "id_estado_encomenda_spec": {
+          "name": "id_estado_encomenda_spec",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "data": {
+          "name": "data",
+          "type": "datetime",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 0,
+          "mappedType": "datetime"
+        }
+      },
+      "name": "estado_encomenda",
+      "indexes": [
+        {
+          "columnNames": [
+            "id_encomenda"
+          ],
+          "composite": false,
+          "keyName": "estado_encomenda_id_encomenda_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "id_estado_encomenda_spec"
+          ],
+          "composite": false,
+          "keyName": "estado_encomenda_id_estado_encomenda_spec_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id_encomenda",
+            "id_estado_encomenda_spec"
+          ],
+          "composite": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "estado_encomenda_id_encomenda_foreign": {
+          "constraintName": "estado_encomenda_id_encomenda_foreign",
+          "columnNames": [
+            "id_encomenda"
+          ],
+          "localTableName": "estado_encomenda",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "encomenda",
+          "updateRule": "cascade"
+        },
+        "estado_encomenda_id_estado_encomenda_spec_foreign": {
+          "constraintName": "estado_encomenda_id_estado_encomenda_spec_foreign",
+          "columnNames": [
+            "id_estado_encomenda_spec"
+          ],
+          "localTableName": "estado_encomenda",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "estado_encomenda_spec",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "data": {
+          "name": "data",
+          "type": "datetime",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 0,
+          "mappedType": "datetime"
+        },
+        "encomenda_id": {
+          "name": "encomenda_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "modo_entrega_id": {
+          "name": "modo_entrega_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "entrega",
+      "indexes": [
+        {
+          "columnNames": [
+            "encomenda_id"
+          ],
+          "composite": false,
+          "keyName": "entrega_encomenda_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "modo_entrega_id"
+          ],
+          "composite": false,
+          "keyName": "entrega_modo_entrega_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "entrega_encomenda_id_foreign": {
+          "constraintName": "entrega_encomenda_id_foreign",
+          "columnNames": [
+            "encomenda_id"
+          ],
+          "localTableName": "entrega",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "encomenda",
+          "updateRule": "cascade"
+        },
+        "entrega_modo_entrega_id_foreign": {
+          "constraintName": "entrega_modo_entrega_id_foreign",
+          "columnNames": [
+            "modo_entrega_id"
+          ],
+          "localTableName": "entrega",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "modo_entrega",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id_linha_encomenda_produto": {
+          "name": "id_linha_encomenda_produto",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "id_linha_encomenda": {
+          "name": "id_linha_encomenda",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "id_entrega": {
+          "name": "id_entrega",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "quantidade": {
+          "name": "quantidade",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "linha_entrega",
+      "indexes": [
+        {
+          "columnNames": [
+            "id_entrega"
+          ],
+          "composite": false,
+          "keyName": "linha_entrega_id_entrega_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "linha_entrega_id_linha_encomenda_produto_id_linha_e_d7ffc_index",
+          "columnNames": [
+            "id_linha_encomenda_produto",
+            "id_linha_encomenda"
+          ],
+          "composite": true,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id_linha_encomenda_produto",
+            "id_linha_encomenda",
+            "id_entrega"
+          ],
+          "composite": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "linha_entrega_id_linha_encomenda_produto_id_linha_34405_foreign": {
+          "constraintName": "linha_entrega_id_linha_encomenda_produto_id_linha_34405_foreign",
+          "columnNames": [
+            "id_linha_encomenda_produto",
+            "id_linha_encomenda"
+          ],
+          "localTableName": "linha_entrega",
+          "referencedColumnNames": [
+            "id_produto",
+            "id_encomenda"
+          ],
+          "referencedTableName": "linha_encomenda",
+          "updateRule": "cascade"
+        },
+        "linha_entrega_id_entrega_foreign": {
+          "constraintName": "linha_entrega_id_entrega_foreign",
+          "columnNames": [
+            "id_entrega"
+          ],
+          "localTableName": "linha_entrega",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "entrega",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id_encomenda": {
+          "name": "id_encomenda",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "motivo": {
+          "name": "motivo",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "data": {
+          "name": "data",
+          "type": "datetime",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 0,
+          "mappedType": "datetime"
+        },
+        "valor": {
+          "name": "valor",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "devolucao",
+      "indexes": [
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id_encomenda"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "devolucao_id_encomenda_foreign": {
+          "constraintName": "devolucao_id_encomenda_foreign",
+          "columnNames": [
+            "id_encomenda"
+          ],
+          "localTableName": "devolucao",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "encomenda",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "zona_id": {
+          "name": "zona_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "estado",
+      "indexes": [
+        {
+          "columnNames": [
+            "zona_id"
+          ],
+          "composite": false,
+          "keyName": "estado_zona_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "estado_zona_id_foreign": {
+          "constraintName": "estado_zona_id_foreign",
+          "columnNames": [
+            "zona_id"
+          ],
+          "localTableName": "estado",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "zona",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "estado_id": {
+          "name": "estado_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "cidade",
+      "indexes": [
+        {
+          "columnNames": [
+            "estado_id"
+          ],
+          "composite": false,
+          "keyName": "cidade_estado_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "cidade_estado_id_foreign": {
+          "constraintName": "cidade_estado_id_foreign",
+          "columnNames": [
+            "estado_id"
+          ],
+          "localTableName": "cidade",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "estado",
+          "updateRule": "cascade"
+        }
+      }
+    }
+  ]
+}
