@@ -56,9 +56,14 @@ class LinhaEncomenda {
 }
 
 class EstadoEncomenda {
-    PK idEstadoEncomenda: Number
-    nome: String
+    PK FK idEncomenda: Encomenda
+    PK FK idEstadoEncomendaSpec: EstadoEncomendaSpec
     data: Date
+}
+
+class EstadoEncomendaSpec {
+    PK idEstadoEncomendaSpec: Number
+    nome: String
 }
 
 class Segmento {
@@ -159,5 +164,6 @@ LinhaEntrega "*" - "1" Entrega
 LinhaEncomenda "1" -- "*" LinhaEntrega
 
 Encomenda "1" -- "*" EstadoEncomenda
+EstadoEncomenda "*" -- "1" EstadoEncomendaSpec
 Encomenda "*" -- "1" PrioridadeEncomenda
 @enduml
