@@ -6,6 +6,7 @@ export * from './Encomenda';
 export * from './Entrega';
 export * from './Estado';
 export * from './EstadoEncomenda';
+export * from './EstadoEncomendaSpec';
 export * from './EstadoPagamento';
 export * from './Funcionario';
 export * from './LinhaEncomenda';
