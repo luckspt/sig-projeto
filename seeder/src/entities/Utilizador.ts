@@ -1,6 +1,6 @@
 import { Entity, OneToOne, PrimaryKey, Property } from '@mikro-orm/core';
-import type { Funcionario } from './Funcionario';
-import type { Cliente } from './Cliente';
+import { Funcionario } from './Funcionario';
+import { Cliente } from './Cliente';
 
 @Entity()
 export class Utilizador {
@@ -25,9 +25,9 @@ export class Utilizador {
 	@Property()
 	public password!: string;
 
-	@OneToOne({ nullable: true })
+	@OneToOne(() => Cliente, (cliente) => cliente.utilizador, { nullable: true })
 	public cliente!: Cliente;
 
-	@OneToOne({ nullable: true })
+	@OneToOne(() => Funcionario, (funcionario) => funcionario.utilizador, { nullable: true })
 	public funcionario!: Funcionario;
 }

@@ -1,5 +1,5 @@
 import { Collection, Entity, ManyToOne, OneToMany, OneToOne } from '@mikro-orm/core';
-import type { Utilizador } from './Utilizador';
+import { Utilizador } from './Utilizador';
 import type { Zona } from './Zona';
 import { Encomenda } from './Encomenda';
 

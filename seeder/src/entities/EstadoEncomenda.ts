@@ -8,7 +8,7 @@ export class EstadoEncomenda {
 	public encomenda!: Encomenda;
 
 	@ManyToOne({ primary: true })
-	public estado!: EstadoEncomendaSpec;
+	public spec!: EstadoEncomendaSpec;
 
 	@Property()
 	public data!: Date;

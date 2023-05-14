@@ -12,8 +12,8 @@ export class Categoria {
 	@Property()
 	public descricao!: string;
 
-	@ManyToOne()
-	public categoriaPai!: Categoria;
+	@ManyToOne({ nullable: true })
+	public categoriaPai?: Categoria;
 
 	@OneToMany(() => Produto, (produto) => produto.categoria)
 	public produtos = new Collection<Produto>(this);

@@ -1,5 +1,5 @@
 import { Entity, OneToOne, Property } from '@mikro-orm/core';
-import type { Encomenda } from './Encomenda';
+import { Encomenda } from './Encomenda';
 
 @Entity()
 export class Devolucao {

@@ -2,12 +2,12 @@ import { Collection, Entity, ManyToOne, OneToMany, OneToOne, PrimaryKey, Propert
 import type { Funcionario } from './Funcionario';
 import type { Cliente } from './Cliente';
 import type { TipoEmbalagem } from './TipoEmbalagem';
-import type { Pagamento } from './Pagamento';
+import { Pagamento } from './Pagamento';
 import type { PrioridadeEncomenda } from './PrioridadeEncomenda';
 import { EstadoEncomenda } from './EstadoEncomenda';
 import { Entrega } from './Entrega';
 import { LinhaEncomenda } from './LinhaEncomenda';
-import type { Devolucao } from './Devolucao';
+import { Devolucao } from './Devolucao';
 
 @Entity()
 export class Encomenda {
@@ -20,7 +20,7 @@ export class Encomenda {
 	@Property()
 	public dataCriacao!: Date;
 
-	@OneToOne({ nullable: true })
+	@OneToOne(() => Devolucao, (devolucao) => devolucao.encomenda, { nullable: true })
 	public devolucao!: Devolucao;
 
 	@ManyToOne()
@@ -32,7 +32,7 @@ export class Encomenda {
 	@ManyToOne()
 	public tipoEmbalagem!: TipoEmbalagem;
 
-	@OneToOne()
+	@OneToOne(() => Pagamento, (pagamento) => pagamento.encomenda, { nullable: true })
 	public pagamento!: Pagamento;
 
 	@ManyToOne()

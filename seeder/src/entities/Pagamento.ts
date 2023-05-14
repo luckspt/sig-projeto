@@ -1,6 +1,6 @@
 import { Entity, ManyToOne, OneToOne, Property } from '@mikro-orm/core';
-import type { Encomenda } from './Encomenda';
-import type { EstadoPagamento } from './EstadoPagamento';
+import { Encomenda } from './Encomenda';
+import { EstadoPagamento } from './EstadoPagamento';
 
 @Entity()
 export class Pagamento {

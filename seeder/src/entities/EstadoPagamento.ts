@@ -1,5 +1,5 @@
-import { Entity, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
-import type { Pagamento } from './Pagamento';
+import { Entity, OneToMany, PrimaryKey, Property } from '@mikro-orm/core';
+import { Pagamento } from './Pagamento';
 
 @Entity()
 export class EstadoPagamento {
@@ -9,6 +9,6 @@ export class EstadoPagamento {
 	@Property()
 	public nome!: string;
 
-	@ManyToOne()
+	@OneToMany(() => Pagamento, (pagamento) => pagamento.estadoPagamento)
 	public pagamento!: Pagamento;
 }

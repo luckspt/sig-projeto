@@ -36,7 +36,7 @@
           "unsigned": true,
           "autoincrement": false,
           "primary": false,
-          "nullable": false,
+          "nullable": true,
           "mappedType": "integer"
         }
       },
@@ -73,6 +73,7 @@
             "id"
           ],
           "referencedTableName": "categoria",
+          "deleteRule": "set null",
           "updateRule": "cascade"
         }
       }
@@ -99,6 +100,42 @@
         }
       },
       "name": "estado_encomenda_spec",
+      "indexes": [
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        }
+      },
+      "name": "estado_pagamento",
       "indexes": [
         {
           "keyName": "PRIMARY",
@@ -476,42 +513,6 @@
           "primary": false,
           "nullable": false,
           "mappedType": "string"
-        }
-      },
-      "name": "zona",
-      "indexes": [
-        {
-          "keyName": "PRIMARY",
-          "columnNames": [
-            "id"
-          ],
-          "composite": false,
-          "primary": true,
-          "unique": true
-        }
-      ],
-      "checks": [],
-      "foreignKeys": {}
-    },
-    {
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "int",
-          "unsigned": true,
-          "autoincrement": true,
-          "primary": true,
-          "nullable": false,
-          "mappedType": "integer"
-        },
-        "nome": {
-          "name": "nome",
-          "type": "varchar(255)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "string"
         },
         "data_nascimento": {
           "name": "data_nascimento",
@@ -558,47 +559,11 @@
           "primary": false,
           "nullable": false,
           "mappedType": "string"
-        },
-        "cliente_id_utilizador": {
-          "name": "cliente_id_utilizador",
-          "type": "int",
-          "unsigned": true,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "mappedType": "integer"
-        },
-        "funcionario_id_utilizador": {
-          "name": "funcionario_id_utilizador",
-          "type": "int",
-          "unsigned": true,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "mappedType": "integer"
         }
       },
       "name": "utilizador",
       "indexes": [
         {
-          "columnNames": [
-            "cliente_id_utilizador"
-          ],
-          "composite": false,
-          "keyName": "utilizador_cliente_id_utilizador_unique",
-          "primary": false,
-          "unique": true
-        },
-        {
-          "columnNames": [
-            "funcionario_id_utilizador"
-          ],
-          "composite": false,
-          "keyName": "utilizador_funcionario_id_utilizador_unique",
-          "primary": false,
-          "unique": true
-        },
-        {
           "keyName": "PRIMARY",
           "columnNames": [
             "id"
@@ -609,110 +574,12 @@
         }
       ],
       "checks": [],
-      "foreignKeys": {
-        "utilizador_cliente_id_utilizador_foreign": {
-          "constraintName": "utilizador_cliente_id_utilizador_foreign",
-          "columnNames": [
-            "cliente_id_utilizador"
-          ],
-          "localTableName": "utilizador",
-          "referencedColumnNames": [
-            "id_utilizador"
-          ],
-          "referencedTableName": "cliente",
-          "deleteRule": "set null",
-          "updateRule": "cascade"
-        },
-        "utilizador_funcionario_id_utilizador_foreign": {
-          "constraintName": "utilizador_funcionario_id_utilizador_foreign",
-          "columnNames": [
-            "funcionario_id_utilizador"
-          ],
-          "localTableName": "utilizador",
-          "referencedColumnNames": [
-            "id_utilizador"
-          ],
-          "referencedTableName": "funcionario",
-          "deleteRule": "set null",
-          "updateRule": "cascade"
-        }
-      }
+      "foreignKeys": {}
     },
     {
       "columns": {
-        "id_utilizador": {
-          "name": "id_utilizador",
-          "type": "int",
-          "unsigned": true,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "integer"
-        },
-        "zona_id": {
-          "name": "zona_id",
-          "type": "int",
-          "unsigned": true,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "integer"
-        }
-      },
-      "name": "funcionario",
-      "indexes": [
-        {
-          "columnNames": [
-            "zona_id"
-          ],
-          "composite": false,
-          "keyName": "funcionario_zona_id_index",
-          "primary": false,
-          "unique": false
-        },
-        {
-          "keyName": "PRIMARY",
-          "columnNames": [
-            "id_utilizador"
-          ],
-          "composite": false,
-          "primary": true,
-          "unique": true
-        }
-      ],
-      "checks": [],
-      "foreignKeys": {
-        "funcionario_id_utilizador_foreign": {
-          "constraintName": "funcionario_id_utilizador_foreign",
-          "columnNames": [
-            "id_utilizador"
-          ],
-          "localTableName": "funcionario",
-          "referencedColumnNames": [
-            "id"
-          ],
-          "referencedTableName": "utilizador",
-          "deleteRule": "cascade",
-          "updateRule": "cascade"
-        },
-        "funcionario_zona_id_foreign": {
-          "constraintName": "funcionario_zona_id_foreign",
-          "columnNames": [
-            "zona_id"
-          ],
-          "localTableName": "funcionario",
-          "referencedColumnNames": [
-            "id"
-          ],
-          "referencedTableName": "zona",
-          "updateRule": "cascade"
-        }
-      }
-    },
-    {
-      "columns": {
-        "id_utilizador": {
-          "name": "id_utilizador",
+        "utilizador_id": {
+          "name": "utilizador_id",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -753,7 +620,7 @@
         {
           "keyName": "PRIMARY",
           "columnNames": [
-            "id_utilizador"
+            "utilizador_id"
           ],
           "composite": false,
           "primary": true,
@@ -762,10 +629,10 @@
       ],
       "checks": [],
       "foreignKeys": {
-        "cliente_id_utilizador_foreign": {
-          "constraintName": "cliente_id_utilizador_foreign",
+        "cliente_utilizador_id_foreign": {
+          "constraintName": "cliente_utilizador_id_foreign",
           "columnNames": [
-            "id_utilizador"
+            "utilizador_id"
           ],
           "localTableName": "cliente",
           "referencedColumnNames": [
@@ -800,6 +667,113 @@
           "nullable": false,
           "mappedType": "integer"
         },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        }
+      },
+      "name": "zona",
+      "indexes": [
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "utilizador_id": {
+          "name": "utilizador_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "zona_id": {
+          "name": "zona_id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "funcionario",
+      "indexes": [
+        {
+          "columnNames": [
+            "zona_id"
+          ],
+          "composite": false,
+          "keyName": "funcionario_zona_id_index",
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "PRIMARY",
+          "columnNames": [
+            "utilizador_id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "funcionario_utilizador_id_foreign": {
+          "constraintName": "funcionario_utilizador_id_foreign",
+          "columnNames": [
+            "utilizador_id"
+          ],
+          "localTableName": "funcionario",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "utilizador",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "funcionario_zona_id_foreign": {
+          "constraintName": "funcionario_zona_id_foreign",
+          "columnNames": [
+            "zona_id"
+          ],
+          "localTableName": "funcionario",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "zona",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
         "valor_total": {
           "name": "valor_total",
           "type": "int",
@@ -819,17 +793,8 @@
           "length": 0,
           "mappedType": "datetime"
         },
-        "devolucao_id_encomenda": {
-          "name": "devolucao_id_encomenda",
-          "type": "int",
-          "unsigned": true,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "mappedType": "integer"
-        },
-        "funcionario_id_utilizador": {
-          "name": "funcionario_id_utilizador",
+        "funcionario_utilizador_id": {
+          "name": "funcionario_utilizador_id",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -837,8 +802,8 @@
           "nullable": false,
           "mappedType": "integer"
         },
-        "cliente_id_utilizador": {
-          "name": "cliente_id_utilizador",
+        "cliente_utilizador_id": {
+          "name": "cliente_utilizador_id",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -848,15 +813,6 @@
         },
         "tipo_embalagem_id": {
           "name": "tipo_embalagem_id",
-          "type": "int",
-          "unsigned": true,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "integer"
-        },
-        "pagamento_id_encomenda": {
-          "name": "pagamento_id_encomenda",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -878,28 +834,19 @@
       "indexes": [
         {
           "columnNames": [
-            "devolucao_id_encomenda"
+            "funcionario_utilizador_id"
           ],
           "composite": false,
-          "keyName": "encomenda_devolucao_id_encomenda_unique",
-          "primary": false,
-          "unique": true
-        },
-        {
-          "columnNames": [
-            "funcionario_id_utilizador"
-          ],
-          "composite": false,
-          "keyName": "encomenda_funcionario_id_utilizador_index",
+          "keyName": "encomenda_funcionario_utilizador_id_index",
           "primary": false,
           "unique": false
         },
         {
           "columnNames": [
-            "cliente_id_utilizador"
+            "cliente_utilizador_id"
           ],
           "composite": false,
-          "keyName": "encomenda_cliente_id_utilizador_index",
+          "keyName": "encomenda_cliente_utilizador_id_index",
           "primary": false,
           "unique": false
         },
@@ -911,15 +858,6 @@
           "keyName": "encomenda_tipo_embalagem_id_index",
           "primary": false,
           "unique": false
-        },
-        {
-          "columnNames": [
-            "pagamento_id_encomenda"
-          ],
-          "composite": false,
-          "keyName": "encomenda_pagamento_id_encomenda_unique",
-          "primary": false,
-          "unique": true
         },
         {
           "columnNames": [
@@ -942,39 +880,26 @@
       ],
       "checks": [],
       "foreignKeys": {
-        "encomenda_devolucao_id_encomenda_foreign": {
-          "constraintName": "encomenda_devolucao_id_encomenda_foreign",
+        "encomenda_funcionario_utilizador_id_foreign": {
+          "constraintName": "encomenda_funcionario_utilizador_id_foreign",
           "columnNames": [
-            "devolucao_id_encomenda"
+            "funcionario_utilizador_id"
           ],
           "localTableName": "encomenda",
           "referencedColumnNames": [
-            "id_encomenda"
-          ],
-          "referencedTableName": "devolucao",
-          "deleteRule": "set null",
-          "updateRule": "cascade"
-        },
-        "encomenda_funcionario_id_utilizador_foreign": {
-          "constraintName": "encomenda_funcionario_id_utilizador_foreign",
-          "columnNames": [
-            "funcionario_id_utilizador"
-          ],
-          "localTableName": "encomenda",
-          "referencedColumnNames": [
-            "id_utilizador"
+            "utilizador_id"
           ],
           "referencedTableName": "funcionario",
           "updateRule": "cascade"
         },
-        "encomenda_cliente_id_utilizador_foreign": {
-          "constraintName": "encomenda_cliente_id_utilizador_foreign",
+        "encomenda_cliente_utilizador_id_foreign": {
+          "constraintName": "encomenda_cliente_utilizador_id_foreign",
           "columnNames": [
-            "cliente_id_utilizador"
+            "cliente_utilizador_id"
           ],
           "localTableName": "encomenda",
           "referencedColumnNames": [
-            "id_utilizador"
+            "utilizador_id"
           ],
           "referencedTableName": "cliente",
           "updateRule": "cascade"
@@ -989,18 +914,6 @@
             "id"
           ],
           "referencedTableName": "tipo_embalagem",
-          "updateRule": "cascade"
-        },
-        "encomenda_pagamento_id_encomenda_foreign": {
-          "constraintName": "encomenda_pagamento_id_encomenda_foreign",
-          "columnNames": [
-            "pagamento_id_encomenda"
-          ],
-          "localTableName": "encomenda",
-          "referencedColumnNames": [
-            "id_encomenda"
-          ],
-          "referencedTableName": "pagamento",
           "updateRule": "cascade"
         },
         "encomenda_prioridade_id_foreign": {
@@ -1019,8 +932,8 @@
     },
     {
       "columns": {
-        "id_encomenda": {
-          "name": "id_encomenda",
+        "encomenda_id": {
+          "name": "encomenda_id",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -1071,7 +984,7 @@
         {
           "keyName": "PRIMARY",
           "columnNames": [
-            "id_encomenda"
+            "encomenda_id"
           ],
           "composite": false,
           "primary": true,
@@ -1080,10 +993,10 @@
       ],
       "checks": [],
       "foreignKeys": {
-        "pagamento_id_encomenda_foreign": {
-          "constraintName": "pagamento_id_encomenda_foreign",
+        "pagamento_encomenda_id_foreign": {
+          "constraintName": "pagamento_encomenda_id_foreign",
           "columnNames": [
-            "id_encomenda"
+            "encomenda_id"
           ],
           "localTableName": "pagamento",
           "referencedColumnNames": [
@@ -1109,75 +1022,8 @@
     },
     {
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "int",
-          "unsigned": true,
-          "autoincrement": true,
-          "primary": true,
-          "nullable": false,
-          "mappedType": "integer"
-        },
-        "nome": {
-          "name": "nome",
-          "type": "varchar(255)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "string"
-        },
-        "pagamento_id_encomenda": {
-          "name": "pagamento_id_encomenda",
-          "type": "int",
-          "unsigned": true,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "integer"
-        }
-      },
-      "name": "estado_pagamento",
-      "indexes": [
-        {
-          "columnNames": [
-            "pagamento_id_encomenda"
-          ],
-          "composite": false,
-          "keyName": "estado_pagamento_pagamento_id_encomenda_index",
-          "primary": false,
-          "unique": false
-        },
-        {
-          "keyName": "PRIMARY",
-          "columnNames": [
-            "id"
-          ],
-          "composite": false,
-          "primary": true,
-          "unique": true
-        }
-      ],
-      "checks": [],
-      "foreignKeys": {
-        "estado_pagamento_pagamento_id_encomenda_foreign": {
-          "constraintName": "estado_pagamento_pagamento_id_encomenda_foreign",
-          "columnNames": [
-            "pagamento_id_encomenda"
-          ],
-          "localTableName": "estado_pagamento",
-          "referencedColumnNames": [
-            "id_encomenda"
-          ],
-          "referencedTableName": "pagamento",
-          "updateRule": "cascade"
-        }
-      }
-    },
-    {
-      "columns": {
-        "id_produto": {
-          "name": "id_produto",
+        "produto_id": {
+          "name": "produto_id",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -1185,8 +1031,8 @@
           "nullable": false,
           "mappedType": "integer"
         },
-        "id_encomenda": {
-          "name": "id_encomenda",
+        "encomenda_id": {
+          "name": "encomenda_id",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -1217,27 +1063,27 @@
       "indexes": [
         {
           "columnNames": [
-            "id_produto"
+            "produto_id"
           ],
           "composite": false,
-          "keyName": "linha_encomenda_id_produto_index",
+          "keyName": "linha_encomenda_produto_id_index",
           "primary": false,
           "unique": false
         },
         {
           "columnNames": [
-            "id_encomenda"
+            "encomenda_id"
           ],
           "composite": false,
-          "keyName": "linha_encomenda_id_encomenda_index",
+          "keyName": "linha_encomenda_encomenda_id_index",
           "primary": false,
           "unique": false
         },
         {
           "keyName": "PRIMARY",
           "columnNames": [
-            "id_produto",
-            "id_encomenda"
+            "produto_id",
+            "encomenda_id"
           ],
           "composite": true,
           "primary": true,
@@ -1246,10 +1092,10 @@
       ],
       "checks": [],
       "foreignKeys": {
-        "linha_encomenda_id_produto_foreign": {
-          "constraintName": "linha_encomenda_id_produto_foreign",
+        "linha_encomenda_produto_id_foreign": {
+          "constraintName": "linha_encomenda_produto_id_foreign",
           "columnNames": [
-            "id_produto"
+            "produto_id"
           ],
           "localTableName": "linha_encomenda",
           "referencedColumnNames": [
@@ -1258,10 +1104,10 @@
           "referencedTableName": "produto",
           "updateRule": "cascade"
         },
-        "linha_encomenda_id_encomenda_foreign": {
-          "constraintName": "linha_encomenda_id_encomenda_foreign",
+        "linha_encomenda_encomenda_id_foreign": {
+          "constraintName": "linha_encomenda_encomenda_id_foreign",
           "columnNames": [
-            "id_encomenda"
+            "encomenda_id"
           ],
           "localTableName": "linha_encomenda",
           "referencedColumnNames": [
@@ -1274,8 +1120,8 @@
     },
     {
       "columns": {
-        "id_encomenda": {
-          "name": "id_encomenda",
+        "encomenda_id": {
+          "name": "encomenda_id",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -1283,8 +1129,8 @@
           "nullable": false,
           "mappedType": "integer"
         },
-        "id_estado_encomenda_spec": {
-          "name": "id_estado_encomenda_spec",
+        "spec_id": {
+          "name": "spec_id",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -1307,27 +1153,27 @@
       "indexes": [
         {
           "columnNames": [
-            "id_encomenda"
+            "encomenda_id"
           ],
           "composite": false,
-          "keyName": "estado_encomenda_id_encomenda_index",
+          "keyName": "estado_encomenda_encomenda_id_index",
           "primary": false,
           "unique": false
         },
         {
           "columnNames": [
-            "id_estado_encomenda_spec"
+            "spec_id"
           ],
           "composite": false,
-          "keyName": "estado_encomenda_id_estado_encomenda_spec_index",
+          "keyName": "estado_encomenda_spec_id_index",
           "primary": false,
           "unique": false
         },
         {
           "keyName": "PRIMARY",
           "columnNames": [
-            "id_encomenda",
-            "id_estado_encomenda_spec"
+            "encomenda_id",
+            "spec_id"
           ],
           "composite": true,
           "primary": true,
@@ -1336,10 +1182,10 @@
       ],
       "checks": [],
       "foreignKeys": {
-        "estado_encomenda_id_encomenda_foreign": {
-          "constraintName": "estado_encomenda_id_encomenda_foreign",
+        "estado_encomenda_encomenda_id_foreign": {
+          "constraintName": "estado_encomenda_encomenda_id_foreign",
           "columnNames": [
-            "id_encomenda"
+            "encomenda_id"
           ],
           "localTableName": "estado_encomenda",
           "referencedColumnNames": [
@@ -1348,10 +1194,10 @@
           "referencedTableName": "encomenda",
           "updateRule": "cascade"
         },
-        "estado_encomenda_id_estado_encomenda_spec_foreign": {
-          "constraintName": "estado_encomenda_id_estado_encomenda_spec_foreign",
+        "estado_encomenda_spec_id_foreign": {
+          "constraintName": "estado_encomenda_spec_id_foreign",
           "columnNames": [
-            "id_estado_encomenda_spec"
+            "spec_id"
           ],
           "localTableName": "estado_encomenda",
           "referencedColumnNames": [
@@ -1462,8 +1308,8 @@
     },
     {
       "columns": {
-        "id_linha_encomenda_produto": {
-          "name": "id_linha_encomenda_produto",
+        "linha_encomenda_produto_id": {
+          "name": "linha_encomenda_produto_id",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -1471,8 +1317,8 @@
           "nullable": false,
           "mappedType": "integer"
         },
-        "id_linha_encomenda": {
-          "name": "id_linha_encomenda",
+        "linha_encomenda_encomenda_id": {
+          "name": "linha_encomenda_encomenda_id",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -1480,8 +1326,8 @@
           "nullable": false,
           "mappedType": "integer"
         },
-        "id_entrega": {
-          "name": "id_entrega",
+        "entrega_id": {
+          "name": "entrega_id",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -1503,18 +1349,18 @@
       "indexes": [
         {
           "columnNames": [
-            "id_entrega"
+            "entrega_id"
           ],
           "composite": false,
-          "keyName": "linha_entrega_id_entrega_index",
+          "keyName": "linha_entrega_entrega_id_index",
           "primary": false,
           "unique": false
         },
         {
-          "keyName": "linha_entrega_id_linha_encomenda_produto_id_linha_e_d7ffc_index",
+          "keyName": "linha_entrega_linha_encomenda_produto_id_linha_enco_62adc_index",
           "columnNames": [
-            "id_linha_encomenda_produto",
-            "id_linha_encomenda"
+            "linha_encomenda_produto_id",
+            "linha_encomenda_encomenda_id"
           ],
           "composite": true,
           "primary": false,
@@ -1523,9 +1369,9 @@
         {
           "keyName": "PRIMARY",
           "columnNames": [
-            "id_linha_encomenda_produto",
-            "id_linha_encomenda",
-            "id_entrega"
+            "linha_encomenda_produto_id",
+            "linha_encomenda_encomenda_id",
+            "entrega_id"
           ],
           "composite": true,
           "primary": true,
@@ -1534,24 +1380,24 @@
       ],
       "checks": [],
       "foreignKeys": {
-        "linha_entrega_id_linha_encomenda_produto_id_linha_34405_foreign": {
-          "constraintName": "linha_entrega_id_linha_encomenda_produto_id_linha_34405_foreign",
+        "linha_entrega_linha_encomenda_produto_id_linha_en_0905a_foreign": {
+          "constraintName": "linha_entrega_linha_encomenda_produto_id_linha_en_0905a_foreign",
           "columnNames": [
-            "id_linha_encomenda_produto",
-            "id_linha_encomenda"
+            "linha_encomenda_produto_id",
+            "linha_encomenda_encomenda_id"
           ],
           "localTableName": "linha_entrega",
           "referencedColumnNames": [
-            "id_produto",
-            "id_encomenda"
+            "produto_id",
+            "encomenda_id"
           ],
           "referencedTableName": "linha_encomenda",
           "updateRule": "cascade"
         },
-        "linha_entrega_id_entrega_foreign": {
-          "constraintName": "linha_entrega_id_entrega_foreign",
+        "linha_entrega_entrega_id_foreign": {
+          "constraintName": "linha_entrega_entrega_id_foreign",
           "columnNames": [
-            "id_entrega"
+            "entrega_id"
           ],
           "localTableName": "linha_entrega",
           "referencedColumnNames": [
@@ -1564,8 +1410,8 @@
     },
     {
       "columns": {
-        "id_encomenda": {
-          "name": "id_encomenda",
+        "encomenda_id": {
+          "name": "encomenda_id",
           "type": "int",
           "unsigned": true,
           "autoincrement": false,
@@ -1607,7 +1453,7 @@
         {
           "keyName": "PRIMARY",
           "columnNames": [
-            "id_encomenda"
+            "encomenda_id"
           ],
           "composite": false,
           "primary": true,
@@ -1616,10 +1462,10 @@
       ],
       "checks": [],
       "foreignKeys": {
-        "devolucao_id_encomenda_foreign": {
-          "constraintName": "devolucao_id_encomenda_foreign",
+        "devolucao_encomenda_id_foreign": {
+          "constraintName": "devolucao_encomenda_id_foreign",
           "columnNames": [
-            "id_encomenda"
+            "encomenda_id"
           ],
           "localTableName": "devolucao",
           "referencedColumnNames": [

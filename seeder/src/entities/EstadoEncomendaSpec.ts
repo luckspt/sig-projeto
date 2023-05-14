@@ -1,4 +1,4 @@
-import { Entity, OneToMany, PrimaryKey, Property } from '@mikro-orm/core';
+import { Collection, Entity, OneToMany, PrimaryKey, Property } from '@mikro-orm/core';
 import { EstadoEncomenda } from './EstadoEncomenda';
 
 @Entity()
@@ -9,6 +9,6 @@ export class EstadoEncomendaSpec {
 	@Property()
 	public nome!: string;
 
-	@OneToMany(() => EstadoEncomenda, (estadoEncomenda) => estadoEncomenda.estado)
-	public estadoEncomendas = new Array<EstadoEncomenda>();
+	@OneToMany(() => EstadoEncomenda, (estadoEncomenda) => estadoEncomenda.spec)
+	public estadoEncomendas = new Collection<EstadoEncomenda>(this);
 }
