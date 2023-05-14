@@ -18,9 +18,7 @@ Para executar o seeder, necessita de definir as seguintes variáveis de ambiente
  
 > Os valores são meros exemplos, e devem ser alterados para os valores que pretende.
 
-Pode-se guiar pelo ficheiro [.env.example](.env.example).
-
-Para isso, basta copiar o ficheiro para `.env`, e alterar os valores.
+Pode-se guiar pelo ficheiro [.env.example](.env.example) para definir as suas variáveis de ambiente. Para isso, basta copiar o ficheiro para `.env`, e alterar os valores.
 
 ## Execução
 
