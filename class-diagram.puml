@@ -1,0 +1,169 @@
+@startuml US Office Store
+
+class Produto {
+    PK idProduto: Number
+    nome: String
+    dataRegisto: Date
+    descricao: String
+    desconto: Number
+    stock: Number
+    peso: Number
+}
+
+class Preco {
+    PK idPreco: Number
+    dataInicio: Date
+    dataFim: Date
+    valor: Number
+}
+
+class Categoria {
+    PK idCategoria: Number
+    nome: String
+    descricao: String
+}
+
+class Utilizador {
+    PK idUtilizador: Number
+    nome: String
+    dataNascimento: Date
+    email: String
+    telefone: String
+    username: String
+    password: String
+}
+
+class Cliente {
+    PK FK idUtilizador: Utilizador
+    moradaEntrega: String
+}
+
+class Funcionario {
+    PK FK idUtilizador: Utilizador
+}
+
+class Encomenda {
+    PK idEncomenda: Number
+    valorTotal: Number
+    dataCriacao: Date
+}
+
+class LinhaEncomenda {
+    PK FK idEncomenda: Encomenda
+    PK FK idProduto: Produto
+    quantidade: Number
+    preco: Number
+}
+
+class EstadoEncomenda {
+    PK FK idEncomenda: Encomenda
+    PK FK idEstadoEncomendaSpec: EstadoEncomendaSpec
+    data: Date
+}
+
+class EstadoEncomendaSpec {
+    PK idEstadoEncomendaSpec: Number
+    nome: String
+}
+
+class Segmento {
+    PK idSegmento: Number
+    nome: String
+}
+
+class PrioridadeEncomenda {
+    PK idPrioridade: Number
+    nome: String
+}
+
+class Entrega {
+    PK idEntrega: Number
+    data: Date
+}
+
+class ModoEntrega{
+    PK idModoEntrega: Number
+    nome: String
+}
+
+class LinhaEntrega {
+    PK FK idEntrega: Entrega
+    PK FK idLinhaEncomenda: LinhaEncomenda
+    quantidade: Number
+}
+
+class Devolucao {
+    PK FK idEncomenda: Encomenda
+    motivo: String
+    data: Date
+    valor: Number
+}
+
+class Pagamento {
+    PK FK idEncomenda: Encomenda
+    data: Date
+    modoPagamento: String 
+    'Ver se colocamos uma entidade para isto'
+}
+
+class EstadoPagamento {
+    PK idEstadoPagamento: Number
+    nome: String
+}
+
+class TipoEmbalagem {
+    PK idEmbalagem: Number
+    nome: String
+}
+
+class Zona {
+    PK idZona: Number
+    nome: String
+}
+
+class Estado {
+    PK idEstado: Number
+    nome: String
+}
+
+class Cidade {
+    PK idCidade: Number
+    nome: String
+}
+
+Cidade "0..*" -- "1" Estado
+Estado "0..*" -- "1" Zona
+Zona "1" - "0..*" Funcionario
+
+Categoria "1" -- "*" Categoria : subCategorias
+
+Encomenda "1" -- "1..*" LinhaEncomenda
+Produto "1" - "*" LinhaEncomenda
+
+Categoria "1" -- "1..*" Produto
+
+Devolucao "0..1" - "1" Encomenda
+TipoEmbalagem "1" -- "*" Encomenda
+
+Utilizador "1" -- "0..1" Funcionario
+Utilizador "1" -- "0..1" Cliente
+
+Funcionario "1" -- "*" Encomenda
+Cliente "1" -- "*" Encomenda
+
+Encomenda "1" -- "1" Pagamento
+Pagamento "1" -- "*" EstadoPagamento
+
+Cliente "*" - "1" Segmento
+
+Produto "1" -- "*" Preco
+
+Encomenda "1" -- "*" Entrega
+Entrega "*" -- "1" ModoEntrega
+LinhaEntrega "*" - "1" Entrega
+LinhaEncomenda "1" -- "*" LinhaEntrega
+
+Encomenda "1" -- "*" EstadoEncomenda
+EstadoEncomenda "*" -- "1" EstadoEncomendaSpec
+Encomenda "*" -- "1" PrioridadeEncomenda
+@enduml
