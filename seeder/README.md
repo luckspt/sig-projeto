@@ -3,7 +3,9 @@
 ## Dependências
 Para executar o seeder, necessita de ter o [*Node.js*](https://nodejs.org/en/) instalado.
 
-Além disso, necessita de um servidor de bases de dados (DBMS). Neste projeto, foi usado [*MySQL*](https://www.mysql.com/). Se pretende usar outro, algum código aplicacional terá de ser alterado.
+Além disso, necessita de um servidor de bases de dados (DBMS). Neste projeto, foi usado [*MySQL*](https://www.mysql.com/).
+
+Se pretende usar outro, algum código aplicacional terá de ser alterado.
 
 ## Variáveis de ambiente
 Para executar o seeder, necessita de definir as seguintes variáveis de ambiente:
@@ -15,6 +17,10 @@ Para executar o seeder, necessita de definir as seguintes variáveis de ambiente
  - `MIKRO_ORM_DEBUG`=true
  
 > Os valores são meros exemplos, e devem ser alterados para os valores que pretende.
+
+Pode-se guiar pelo ficheiro [.env.example](.env.example).
+
+Para isso, basta copiar o ficheiro para `.env`, e alterar os valores.
 
 ## Execução
 
