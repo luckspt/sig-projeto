@@ -8,8 +8,8 @@ export class PrecoFactory extends Factory<Preco> {
 		const dataInicio = faker.date.past();
 		return {
 			dataInicio,
-			dataFim: faker.date.future(undefined, dataInicio)
-			// valor is defined taking into account the value of the linhaencomenda
+			dataFim: faker.date.future(undefined, dataInicio),
+			valor: faker.datatype.number({ min: 1, max: 50000 })
 		};
 	}
 }

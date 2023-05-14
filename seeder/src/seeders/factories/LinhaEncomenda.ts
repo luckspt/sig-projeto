@@ -6,7 +6,6 @@ export class LinhaEncomendaFactory extends Factory<LinhaEncomenda> {
 
 	public definition(faker: Faker): Partial<LinhaEncomenda> {
 		return {
-			preco: faker.datatype.number({ min: 0, max: 25000 }),
 			quantidade: faker.datatype.number({ min: 1, max: 100 })
 		};
 	}
